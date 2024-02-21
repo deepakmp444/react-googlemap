@@ -78,8 +78,8 @@ function Directions({ origin, destination, setRouteSummary }) {
             <div className='bg-white' style={{ position: 'absolute', top: 20, left: 990, width: "300px", height: "530px", overflow: "auto" }}>
                 {<p className='text-center mt-2'><strong>{routes?.[0]?.legs?.[0].steps && routes?.[0]?.legs?.[0].steps?.[0]?.travel_mode}</strong></p>}
                 {selectRoute &&
-    Object.keys(selectRoute).length === 0 &&
-    selectRoute.constructor === Object ? <ul className="bg-white p-2">
+                    Object.keys(selectRoute).length === 0 &&
+                    selectRoute.constructor === Object ? <ul className="bg-white p-2">
                     {routes.map((route, index) => (
                         <li key={index} className="bg-light mb-1">
                             <div role="button" onClick={() => handleRoute(index, route)} className="d-flex justify-content-between p-2">
@@ -95,8 +95,8 @@ function Directions({ origin, destination, setRouteSummary }) {
 
                 {selectRoute ? <button className="btn btn-light" onClick={() => setSelectRoute({})}>Back</button> : null}
 
-                {selectRoute.legs?.[0].steps?.map((value, index)=>{
-                    return(
+                {selectRoute.legs?.[0].steps?.map((value, index) => {
+                    return (
                         <div key={index}>{value?.distance?.text}</div>
                     )
                 })}
