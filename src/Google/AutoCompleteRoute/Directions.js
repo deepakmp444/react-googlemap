@@ -6,7 +6,6 @@ function Directions({ origin, destination, setRouteSummary }) {
     const routesLibrary = useMapsLibrary('routes');
     const [directionsService, setDirectionsService] = useState();
     const [directionsRenderer, setDirectionsRenderer] = useState();
-    console.log('directionsRenderer:', directionsRenderer)
     const [routes, setRoutes] = useState([]);
     console.log('routes:', routes)
     const [routeIndex, setRouteIndex] = useState(0);
@@ -33,23 +32,23 @@ function Directions({ origin, destination, setRouteSummary }) {
             .route({
                 origin: origin,
                 destination: destination,
-                provideRouteAlternatives: true,
+                provideRouteAlternatives: false,
                 // travelMode: 'TRANSIT',
                 // transitOptions: {
                 //     departureTime: new Date(/* now, or future date */),
-                //     modes: ['TRAM'],
+                //     modes: ['RAIL'],
                 //     routingPreference: 'FEWER_TRANSFERS'
                 // },
 
                 travelMode: 'DRIVING',
-                drivingOptions: {
-                    departureTime: new Date(/* now, or future date */),
-                    trafficModel: 'pessimistic'
-                },
+                // drivingOptions: {
+                //     departureTime: new Date(/* now, or future date */),
+                //     trafficModel: 'pessimistic'
+                // },
             })
             .then(response => {
                 console.log('Before response:', response)
-                response.routes[0].legs[0].steps[0].transit = undefined
+                // response.routes[0].legs[0].steps[0].transit = undefined
                 directionsRenderer.setDirections(response);
                 directionsRenderer.setOptions({
                     polylineOptions: {
@@ -74,9 +73,9 @@ function Directions({ origin, destination, setRouteSummary }) {
     useEffect(() => {
         if (!directionsRenderer) return;
 
-        // directionsRenderer.setRouteIndex(routeIndex);
-        // directionsRenderer.setRouteIndex(1);
-        // directionsRenderer.setRouteIndex(2);
+        directionsRenderer.setRouteIndex(routeIndex);
+        directionsRenderer.setRouteIndex(1);
+        directionsRenderer.setRouteIndex(2);
     }, [routeIndex, directionsRenderer, origin, destination]);
 
     if (!leg) return null;

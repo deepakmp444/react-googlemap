@@ -5,6 +5,7 @@ import Gmap from "./Google/Gmap"
 import TestMap from "./Google/TestMap"
 import Autocomplete from "./Google/Autocomplete/Autocomplete";
 import AutoCompleteRoute from "./Google/AutoCompleteRoute/AutoCompleteRoute";
+import ReactMap from "./ReactGoogleMapAPI/ReactMap";
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
         {/* <TestMap/> */}
         {/* <GDirection /> */}
         {/* <Autocomplete /> */}
-        <AutoCompleteRoute />
+        {/* <AutoCompleteRoute /> */}
+
+        <ReactMap/>
       </div>
     </div>
   )
